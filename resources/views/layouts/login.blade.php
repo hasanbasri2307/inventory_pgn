@@ -1,95 +1,126 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Log in</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="{{ asset(env('ASSET_DIR').'bootstrap/css/bootstrap.min.css') }}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset(env('ASSET_DIR').'font-awesome.min.css') }}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="{{ asset(env('ASSET_DIR').'ionicons.min.css') }}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset(env('ASSET_DIR').'dist/css/AdminLTE.min.css') }}">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="{{ asset(env('ASSET_DIR').'plugins/iCheck/square/blue.css') }}">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body class="hold-transition login-page">
-<div class="login-box">
-    <div class="login-logo">
-        <a href="{{ url('/login') }}"><b>Admin</b>LTE</a>
-    </div>
-    <!-- /.login-logo -->
-    <div class="login-box-body">
-        <p class="login-box-msg">Sign in</p>
-
-        {!! Form::open(['url'=> '/login','method'=>'post']) !!}
-            <div class="form-group {{ $errors->has('email') ? 'has-feedback has-error' : 'has-feedback' }}">
-                {!! Form::text('email',old('email'),['class'=>'form-control','placeholder'=>'Email']) !!}
-                @if ($errors->has('email'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
-                @endif
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-            </div>
-            <div class="form-group {{ $errors->has('email') ? 'has-feedback has-error' : 'has-feedback' }}">
-                {!! Form::password('password',['class'=>'form-control','placeholder'=>'Password']) !!}
-                @if ($errors->has('password'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                @endif
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
-            <div class="row">
-                <div class="col-xs-8">
-                    <div class="checkbox icheck">
-                        <label>
-                            {!! Form::checkbox('remember') !!} Remember Me
-                        </label>
+<html class="no-js before-run" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <meta name="description" content="bootstrap admin template">
+        <meta name="author" content="">
+        <title>{{ $title }}</title>
+        <link rel="apple-touch-icon" href="{{ asset(env('ASSET_DIR').'images/apple-touch-icon.png') }}">
+        <link rel="shortcut icon" href="{{ asset(env('ASSET_DIR').'images/favicon.ico') }}">
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="{{ asset(env('ASSET_DIR').'css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset(env('ASSET_DIR').'css/bootstrap-extend.min.css') }}">
+        <link rel="stylesheet" href="{{ asset(env('ASSET_DIR').'css/site.min.css') }}">
+        <link rel="stylesheet" href="{{ asset(env('ASSET_DIR').'vendor/animsition/animsition.css') }}">
+        <link rel="stylesheet" href="{{ asset(env('ASSET_DIR').'vendor/asscrollable/asScrollable.css') }}">
+        <link rel="stylesheet" href="{{ asset(env('ASSET_DIR').'vendor/switchery/switchery.css') }}">
+        <link rel="stylesheet" href="{{ asset(env('ASSET_DIR').'vendor/intro-js/introjs.css') }}">
+        <link rel="stylesheet" href="{{ asset(env('ASSET_DIR').'vendor/slidepanel/slidePanel.css') }}">
+        <link rel="stylesheet" href="{{ asset(env('ASSET_DIR').'vendor/flag-icon-css/flag-icon.css') }}">
+        <!-- Page -->
+        <link rel="stylesheet" href="{{ asset(env('ASSET_DIR').'css/pages/login.css') }}">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="{{ asset(env('ASSET_DIR').'fonts/web-icons/web-icons.min.css') }}">
+        <link rel="stylesheet" href="{{ asset(env('ASSET_DIR').'fonts/brand-icons/brand-icons.min.css') }}">
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+        <!--[if lt IE 9]>
+        <script src="vendor/html5shiv/html5shiv.min.js"></script>
+        <![endif]-->
+        <!--[if lt IE 10]>
+        <script src="vendor/media-match/media.match.min.js"></script>
+        <script src="vendor/respond/respond.min.js"></script>
+        <![endif]-->
+        <!-- Scripts -->
+        <script src="{{ asset(env('ASSET_DIR').'vendor/modernizr/modernizr.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'vendor/breakpoints/breakpoints.js') }}"></script>
+        <script>
+            Breakpoints();
+        </script>
+    </head>
+    <body class="page-forgot-password layout-full" style="background-color: #E2E2E2">
+        <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <!-- Page -->
+        <div class="page animsition vertical-align text-center" data-animsition-in="fade-in"
+            data-animsition-out="fade-out">
+            <div class="page-content vertical-align-middle">
+                <div class="brand">
+                    <img class="brand-img" src="{{ asset(env('ASSET_DIR').'images/pgn-logo1.png') }}" width="200px" height="140px" alt="...">
+                </div>
+                <h2 class="page-title"></h2>
+                {!! Form::open(['url'=>'login','method'=>'POST','class'=>'width-300 margin-top-30 center-block']) !!}
+                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                	{!! Form::email('email',old('email'),['class'=>'form-control','placeholder'=>'Email']) !!}
+                	@if ($errors->has('email'))
+	                    <span class="help-block pull-left">
+	                        <strong>{{ $errors->first('email') }}</strong>
+	                    </span>
+	                @endif
+                </div>
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                	{!! Form::password('password',['class'=>'form-control','placeholder'=>'Password']) !!}
+                	@if ($errors->has('password'))
+	                    <span class="help-block pull-left">
+	                        <strong>{{ $errors->first('password') }}</strong>
+	                    </span>
+	                @endif
+                </div>
+                <div class="form-group clearfix">
+                    <div class="checkbox-custom checkbox-inline pull-left">
+                        {!! Form::checkbox('remember',1,false,['id'=>'inputCheckbox']) !!}
+                        <label for="inputCheckbox">Remember me</label>
                     </div>
                 </div>
-                <!-- /.col -->
-                <div class="col-xs-4">
-                    {!! Form::submit('Sign In',['class'=>'btn btn-primary btn-block btn-flat']) !!}
-
+                <div class="form-group">
+                	{!! Form::submit('Submit',['class'=>'btn btn-primary btn-block']) !!}
                 </div>
-                <!-- /.col -->
+                {!! Form::close() !!}
+                <footer class="page-copyright">
+                    <p>SYSTEM BY PGN</p>
+                    <p>© {{ date("Y") }}. All RIGHT RESERVED.</p>
+                </footer>
             </div>
-        </form>
-
-        <a href="#">I forgot my password</a><br>
-
-    </div>
-    <!-- /.login-box-body -->
-</div>
-<!-- /.login-box -->
-
-<!-- jQuery 2.2.0 -->
-<script src="{{ asset(env('ASSET_DIR').'plugins/jQuery/jQuery-2.2.0.min.js') }}"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="{{ asset(env('ASSET_DIR').'bootstrap/js/bootstrap.min.js') }}"></script>
-<!-- iCheck -->
-<script src="{{ asset(env('ASSET_DIR').'plugins/iCheck/icheck.min.js') }}"></script>
-<script>
-    $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
-        });
-    });
-</script>
-</body>
+        </div>
+        <!-- End Page -->
+        <!-- Core  -->
+        <script src="{{ asset(env('ASSET_DIR').'vendor/jquery/jquery.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'vendor/bootstrap/bootstrap.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'vendor/animsition/jquery.animsition.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'vendor/asscroll/jquery-asScroll.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'vendor/mousewheel/jquery.mousewheel.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'vendor/asscrollable/jquery.asScrollable.all.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'vendor/ashoverscroll/jquery-asHoverScroll.js') }}"></script>
+        <!-- Plugins -->
+        <script src="{{ asset(env('ASSET_DIR').'vendor/switchery/switchery.min.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'vendor/intro-js/intro.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'vendor/screenfull/screenfull.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'vendor/slidepanel/jquery-slidePanel.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'vendor/jquery-placeholder/jquery.placeholder.js') }}"></script>
+        <!-- Scripts -->
+        <script src="{{ asset(env('ASSET_DIR').'js/core.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'js/site.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'js/sections/menu.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'js/sections/menubar.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'js/sections/sidebar.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'js/configs/config-colors.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'js/configs/config-tour.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'js/components/asscrollable.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'js/components/animsition.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'js/components/slidepanel.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'js/components/switchery.js') }}"></script>
+        <script src="{{ asset(env('ASSET_DIR').'js/components/jquery-placeholder.js') }}"></script>
+        <script>
+            (function(document, window, $) {
+              'use strict';
+            
+              var Site = window.Site;
+              $(document).ready(function() {
+                Site.run();
+              });
+            })(document, window, jQuery);
+        </script>
+    </body>
 </html>

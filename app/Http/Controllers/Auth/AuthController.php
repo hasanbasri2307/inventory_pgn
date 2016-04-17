@@ -28,7 +28,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new authentication controller instance.
@@ -71,6 +71,7 @@ class AuthController extends Controller
     }
 
 	public function showLoginForm (){
-		return view("layouts.login");
+        $this->data['title'] = "PT. PGN Energy - Login";
+		return view("layouts.login",$this->data);
 	}
 }

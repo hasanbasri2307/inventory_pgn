@@ -13,8 +13,9 @@ class User extends Authenticatable
      */
 
 	public $timestamp = true;
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','role','dep_id','status_user'
     ];
 
     /**
@@ -25,4 +26,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function department(){
+        return $this->belongsTo('App\Department','dep_id');
+    }
 }
