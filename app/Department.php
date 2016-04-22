@@ -14,4 +14,8 @@ class Department extends Model
     public function user(){
     	return $this->hasMany('App\User','dep_id');
     }
+
+    public function ro(){
+    	return $this->hasOne('App\RequestOrder','dep_id');
+    }
 }

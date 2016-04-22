@@ -30,4 +30,12 @@ class User extends Authenticatable
     public function department(){
         return $this->belongsTo('App\Department','dep_id');
     }
+
+    public function ro_req_by(){
+        return $this->hasMany('App\RequestOrder','req_by');
+    }
+
+    public function ro_approve_by(){
+        return $this->hasMany('App\RequestOrder','approved_by');
+    }
 }

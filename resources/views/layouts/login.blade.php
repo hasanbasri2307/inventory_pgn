@@ -48,7 +48,7 @@
             data-animsition-out="fade-out">
             <div class="page-content vertical-align-middle">
                 <div class="brand">
-                    <img class="brand-img" src="{{ asset(env('ASSET_DIR').'images/pgn-logo1.png') }}" width="200px" height="140px" alt="...">
+                    <img class="brand-img" src="{{ asset(env('ASSET_DIR').'images/pgn-saka.png') }}" width="400px" height="100px" alt="...">
                 </div>
                 <h2 class="page-title"></h2>
                 {!! Form::open(['url'=>'login','method'=>'POST','class'=>'width-300 margin-top-30 center-block']) !!}

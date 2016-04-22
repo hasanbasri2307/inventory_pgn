@@ -57,6 +57,17 @@ Route::group(['middleware'=>['auth']],function(){
 	Route::get('product/edit/{id}/{name}','ProductController@edit');
 	Route::put('product/update/{id}','ProductController@update');
 	Route::delete('product/delete/{id}','ProductController@delete');
+
+	//request order
+	Route::get('request-order','RequestOrderController@index');
+	Route::get('request-order/create','RequestOrderController@create');
+	Route::post('request-order/save','RequestOrderController@save');
+	Route::get('request-order/show/{id}/{no_ro}','RequestOrderController@show');
+	Route::get('request-order/edit/{id}/{no_ro}','RequestOrderController@edit');
+	Route::put('request-order/update/{id}','RequestOrderController@update');
+	Route::delete('request-order/delete/{id}','RequestOrderController@delete');
+	Route::get('request-order/sub/delete/{id}','RequestOrderController@delete_sub');
+	Route::post('request-order/sub/save','RequestOrderController@save_sub');
 	
 });
 

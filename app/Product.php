@@ -13,4 +13,8 @@ class Product extends Model
     public function sub_category(){
     	return $this->belongsTo('App\Subcategory','sub_cat_id');
     }
+
+    public function detail_ro(){
+    	return $this->hasMany('App\DetailPO','product_id');
+    }
 }
