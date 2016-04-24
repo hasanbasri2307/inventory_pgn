@@ -21,7 +21,7 @@
                                         <span class="input-group-addon">
                                           <i class="icon wb-calendar" aria-hidden="true"></i>
                                         </span>
-                                        {!! Form::text('date_ro',old('date_ro'),['class'=>'form-control','data-plugin'=>'datepicker']) !!}
+                                        {!! Form::text('date_ro',old('date_ro'),['class'=>'form-control','data-plugin'=>'datepicker','data-format'=>'yyyy-mm-dd']) !!}
                                         
                                       </div>
                                       @if($errors->has('date_ro'))

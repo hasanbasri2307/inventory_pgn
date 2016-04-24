@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class DetailRO extends Model
 {
     //
-    public $timestamp= false;
+    public $timestamps = false;
     protected $table = "detail_ro";
 
     public function ro(){

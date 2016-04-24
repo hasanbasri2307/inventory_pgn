@@ -16,7 +16,7 @@ class RequestOrderController extends Controller
 {
     //
     public function index(){
-		$ro = RequestOrder::all();
+		$ro = RequestOrder::with(['detail_ro'])->get();
 		$title = "Request Order";
 		$this->data['ro'] = $ro;
 		$this->data['title'] = $title;
@@ -37,6 +37,7 @@ class RequestOrderController extends Controller
 	}
 
 	public function save(RequestOrderRequest $request){
+
 		$ro = new RequestOrder();
 		$ro->no_ro  = Nomor::getNomor("request_order","no_ro","RO");
 		$ro->date_ro = $request->date_ro;

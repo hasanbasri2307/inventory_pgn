@@ -15,11 +15,11 @@ class RequestOrder extends Model
     	return $this->hasMany("App\DetailRO","ro_id");
     }
 
-    public function req_by(){
+    public function user(){
     	return $this->belongsTo('App\User','req_by');
     }
 
-    public function approved_by(){
+    public function user_approve(){
     	return $this->belongsTo('App\User','approved_by');
     }
 

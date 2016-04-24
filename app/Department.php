@@ -16,6 +16,6 @@ class Department extends Model
     }
 
     public function ro(){
-    	return $this->hasOne('App\RequestOrder','dep_id');
+    	return $this->hasMany('App\RequestOrder','dep_id');
     }
 }
