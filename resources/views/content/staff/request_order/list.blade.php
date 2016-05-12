@@ -67,7 +67,7 @@
                     </div>
                     <div class="col-sm-6 text-right">
                       <div class="form-group">
-                        <input id="filteringSearch" type="text" placeholder="Search" class="form-control"
+                        <input id="addRemoveSearch" type="text" placeholder="Search" class="form-control"
                         autocomplete="off">
                       </div>
                     </div>
@@ -190,24 +190,10 @@
       // ---------
       (function() {
         var filtering = $('#exampleFootableFiltering');
-        filtering.footable().on('footable_filtering', function(e) {
-          var selected = $('#filteringStatus').find(':selected').val();
-          e.filter += (e.filter && e.filter.length > 0) ? ' ' +
-            selected : selected;
-          e.clear = !e.filter;
-        });
-
-        // Filter status
-        $('#filteringStatus').change(function(e) {
+        
+        $('#addRemoveSearch').on('input', function(e) {
           e.preventDefault();
-          filtering.trigger('footable_filter', {
-            filter: $(this).val()
-          });
-        });
 
-        // Search input
-        $('#filteringSearch').on('input', function(e) {
-          e.preventDefault();
           filtering.trigger('footable_filter', {
             filter: $(this).val()
           });

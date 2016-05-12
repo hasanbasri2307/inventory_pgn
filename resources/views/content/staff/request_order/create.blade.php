@@ -128,7 +128,7 @@ var products = [];
                   }else{
                     alert("Product that you have chosen already exists");
                     products = [];
-                    return false;
+                    e.preventDefault();
                   }
                  }       
               });
@@ -138,7 +138,7 @@ var products = [];
 
         $(document).on('click','#add_sub',function(){
             $(".select2").select2("destroy");
-            $('#subcat').append("<tr><td>"+_select+"</td><td><input type='number' class='form-control' min = '1' name='qty[]'></td><td><button type='button' class='btn btn-danger' id='remove' onclick='hapus(this)'>Remove</button></td></tr>");
+            $('#subcat').append("<tr><td>"+_select+"</td><td><input type='number' class='form-control' min = '1' name='qty[]' value='1'></td><td><button type='button' class='btn btn-danger' id='remove' onclick='hapus(this)'>Remove</button></td></tr>");
             $(".select2").select2({               
                 placeholder: "Example",
                 alowClear:true
