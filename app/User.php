@@ -38,4 +38,8 @@ class User extends Authenticatable
     public function ro_approve_by(){
         return $this->hasMany('App\RequestOrder','approved_by');
     }
+
+    public function po(){
+        return $this->hasMany('App\PurchaseOrder','created_by');
+    }
 }

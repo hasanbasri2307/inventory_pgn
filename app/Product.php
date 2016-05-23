@@ -15,6 +15,19 @@ class Product extends Model
     }
 
     public function detail_ro(){
+    	return $this->hasMany('App\DetailRO','product_id');
+    }
+
+    public function detail_po(){
     	return $this->hasMany('App\DetailPO','product_id');
     }
+
+     public function detail_do(){
+    	return $this->hasMany('App\DetailDO','product_id');
+    }
+
+    public function stock(){
+    	return $this->hasMany('App\Stock','product_id');
+    }
+
 }

@@ -18,7 +18,7 @@ class ProductController extends Controller
 		$this->data['products'] = $product;
 		$this->data['title'] = $title;
 
-		return view("content.administrator.product.list",$this->data);
+		return view("content.master.product.list",$this->data);
 	}
 
 	public function create(){
@@ -26,7 +26,7 @@ class ProductController extends Controller
 		$this->data['category'] = $this->get_category();
 		$this->data['title'] = $title;
 
-		return view("content.administrator.product.create",$this->data);
+		return view("content.msater.product.create",$this->data);
 	}
 
 	public function save(ProductRequest $request){
@@ -48,7 +48,7 @@ class ProductController extends Controller
 		$this->data['title'] = $title;
 		$this->data['category'] = $this->get_category();
 
-		return view("content.administrator.product.edit",$this->data);
+		return view("content.master.product.edit",$this->data);
 	}
 
 	public function update($id,ProductRequest $request){

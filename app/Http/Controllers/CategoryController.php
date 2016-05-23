@@ -19,14 +19,14 @@ class CategoryController extends Controller
 		$this->data['categories'] = $category;
 		$this->data['title'] = $title;
 
-		return view("content.administrator.category.list",$this->data);
+		return view("content.master.category.list",$this->data);
 	}
 
 	public function create(){
 		$title = "Create Category";
 		$this->data['title'] = $title;
 
-		return view("content.administrator.category.create",$this->data);
+		return view("content.master.category.create",$this->data);
 	}
 
 	public function save(CategoryRequest $request){
@@ -54,7 +54,7 @@ class CategoryController extends Controller
 		$this->data['title'] = $title;
 		$this->data['subcategory'] = $subcategory;
 
-		return view("content.administrator.category.edit",$this->data);
+		return view("content.master.category.edit",$this->data);
 	}
 
 	public function update($id,CategoryRequest $request){

@@ -41,14 +41,19 @@
               <table class="table table-bordered table-hover toggle-circle" id="exampleFootableFiltering">
                 <thead>
                   <tr>
-                    <th data-toggle="true">No. Request Order</th>
+                    <th data-toggle="true">No. Delivery Order</th>
                     <th>Date</th>
+                    <th>File DO</th>
                     <th>Action</th>
-                    <th data-hide="phone, tablet">Req. By</th>
-                    <th data-hide="phone, tablet">Approve By</th>
-                    <th data-hide="phone, tablet">Status Request</th>
+                    <th data-hide="phone, tablet">Purchase Order Number</th>
+                    <th data-hide="phone, tablet">Date of Purchase Order</th>
+                    <th data-hide="phone, tablet">Request By</th>
+                    <th data-hide="phone, tablet">Department</th>
+                    <th data-hide="phone, tablet">Vendor</th>
+                    <th data-hide="phone, tablet">Purchase Order Status</th>
                     <th data-hide="phone, tablet">Created At</th>
                     <th data-hide="phone, tablet">Updated At</th>
+                    <th data-hide="phone, tablet"></th>
                     <th data-hide="phone, tablet"></th>
                   </tr>
                 </thead>
@@ -74,41 +79,41 @@
                   </div>
                 </div>
                 <tbody>
-                @foreach($ro as $item)
+                @foreach($do as $item)
                   <tr>
-                    <td>{{ $item->no_ro }}</td>
-                    <td>{{ date("d F Y",strtotime($item->date_ro)) }}</td>
+                    <td>{{ $item->no_do }}</td>
+                    <td>{{ date("d F Y",strtotime($item->do_date)) }}</td>
+                    <td><a href="{{ asset('uploaded/'.$item->file_do) }}" target="_blank">{{ $item->file_do }}</a></td> 
                     <td>
                       <div class="btn-group">
                           <button type="button" class="btn btn-default dropdown-toggle" id="exampleAnimationDropdown1" data-toggle="dropdown" aria-expanded="false">Action
                             <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu animate" aria-labelledby="exampleAnimationDropdown1" role="menu">
-                            <li role="presentation"><a href="{{ url('request-order/edit/'.$item->id.'/'.$item->no_ro) }}" role="menuitem"><i class="icon wb-edit" aria-hidden="true"></i>Edit</a></li>
-                            <li role="presentation"><a href="{{ url('request-order/delete/'.$item->id) }}" role="menuitem" data-method="delete" data-confirm="Delete this data ?" data-token="{{ csrf_token() }}"><i class="icon wb-trash" aria-hidden="true" ></i>Delete</a></li>
+                              @if(Auth::user()->role == "staff" && Auth::user()->dep_id == 7)
+                              <li role="presentation"><a href="{{ url('delivery-order/edit/'.$item->id) }}" role="menuitem"><i class="icon wb-edit" aria-hidden="true"></i>Edit</a></li>
+                              @elseif(Auth::user()->role =="administrator")
+                                  <li role="presentation"><a href="{{ url('delivery-order/edit/'.$item->id) }}" role="menuitem"><i class="icon wb-edit" aria-hidden="true"></i>Edit</a></li>
+                              @else
+                                  <li role="presentation">-</li>
+                              @endif
+
+
                            
                           </ul>
                         </div>
                     </td>
-                    <td>{{ $item->user->name }}</td>
+                    <td>{{ $item->po->no_po}}</td>
+                    <td>{{ date("d F Y",strtotime($item->po->po_date)) }}</td>
+                    <td>{{ $item->po->ro->user->name }}</td>
+                    <td>{{ $item->po->ro->department->d_name }}</td>
+                    <td>{{ $item->po->vendor->v_name }}</td>
                     <td>
-                      @if($item->approved_by == 0)
-                        Not Approved
-                      @else
-                        {{ $item->user_approve->name }}
-                      @endif
-                    </td>
-              
-
-                    <td>
-                      @if($item->status_ro == '0')
+                      @if($item->po->status_po == '0')
                         <span class="label label-warning">On Process</span>
-                      @elseif($item->status_ro == '1')
-                        <span class="label label-success">Approved</span>
-                      @elseif($item->status_ro == '2')
-                        <span class="label label-danger">Rejected</span>
-                      @else
-                        Not Set
+                      @elseif($item->po->status_po == '1')
+                        <span class="label label-success">Finish</span>
+                      
                       @endif
                     </td> 
                     <td>
@@ -124,17 +129,15 @@
                             <tr>
                               <th>#</th>
                               <th>Product</th>
-                              <th>Qty Req.</th>
-                              <th>Qty Approved</th>
+                              <th>Qty Arrived</th>
                             </tr>
                           </thead>
                           <tbody>
-                            @foreach($item->detail_ro  as $key => $detail)
+                            @foreach($item->detail_do  as $key => $detail)
                             <tr>
                               <td>{{ $key+=1 }}</td>
                               <td>{{ $detail->product->p_name }}</td>
-                              <td>{{ $detail->qty_req }}</td>
-                              <td>{{ $detail->qty_approve }}</td>
+                              <td>{{ $detail->qty }}</td>
                             </tr>
                             @endforeach
                           </tbody>

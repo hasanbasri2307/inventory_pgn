@@ -18,4 +18,8 @@ class Department extends Model
     public function ro(){
     	return $this->hasMany('App\RequestOrder','dep_id');
     }
+
+    public function stock(){
+    	return $this->hasMany('App\Stock','dep_id');
+    }
 }

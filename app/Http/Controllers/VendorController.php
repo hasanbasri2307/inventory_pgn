@@ -17,14 +17,14 @@ class VendorController extends Controller
 		$this->data['vendors'] = $vendor;
 		$this->data['title'] = $title;
 
-		return view("content.administrator.vendor.list",$this->data);
+		return view("content.master.vendor.list",$this->data);
 	}
 
 	public function create(){
 		$title = "Create Vendor";
 		$this->data['title'] = $title;
 
-		return view("content.administrator.vendor.create",$this->data);
+		return view("content.master.vendor.create",$this->data);
 	}
 
 	public function save(VendorRequest $request){
@@ -45,7 +45,7 @@ class VendorController extends Controller
 		$this->data['vendor'] = $vendor;
 		$this->data['title'] = $title;
 
-		return view("content.administrator.vendor.edit",$this->data);
+		return view("content.master.vendor.edit",$this->data);
 	}
 
 	public function update($id,VendorRequest $request){

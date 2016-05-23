@@ -13,7 +13,7 @@ class DeliveryOrderRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,24 @@ class DeliveryOrderRequest extends Request
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        switch($this->method()){
+            case 'POST':
+                 return [
+                    //
+                    "do_date" => "required",
+                    "po_id" => "required",
+                    "file_do" => "required",
+                    "latest_do" => "required"
+                ];
+                break;
+
+            case 'PUT':
+                 return [
+                    //
+                    "do_date" => "required",
+                    "latest_do" => "required"
+                ];
+        }
+       
     }
 }

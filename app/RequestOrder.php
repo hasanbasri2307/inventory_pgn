@@ -26,4 +26,8 @@ class RequestOrder extends Model
     public function department(){
     	return $this->belongsTo('App\Department','dep_id');
     }
+
+    public function po(){
+        return $this->hasOne('App\PurchaseOrder','ro_id');
+    }
 }

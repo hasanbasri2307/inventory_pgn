@@ -37,8 +37,6 @@ class RequestOrderRequest extends Request
                 return [
                     //
                     'status_ro' => 'required',
-                    'reject_reason' => 'required',
-                    'date_ro' => 'required'
                 ];
 
                 break;

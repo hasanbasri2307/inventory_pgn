@@ -102,7 +102,7 @@
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li role="presentation">
-                                    <a href="javascript:void(0)" role="menuitem"><i class="icon wb-user" aria-hidden="true"></i> Profile</a>
+                                    <a href="javascript:void(0)" role="menuitem"><i class="icon wb-user" aria-hidden="true"></i> {{ Auth::user()->name }} - {{ Auth::user()->department->d_name }} ({{ Auth::user()->role }}) </a>
                                 </li>
                                 
                                 <li class="divider" role="presentation"></li>
@@ -119,18 +119,7 @@
         </nav>
         <div class="site-menubar">
             @include("includes.menu.".Auth::user()->role)
-            <div class="site-menubar-footer">
-                <a href="javascript: void(0);" class="fold-show" data-placement="top" data-toggle="tooltip"
-                    data-original-title="Settings">
-                <span class="icon wb-settings" aria-hidden="true"></span>
-                </a>
-                <a href="javascript: void(0);" data-placement="top" data-toggle="tooltip" data-original-title="Lock">
-                <span class="icon wb-eye-close" aria-hidden="true"></span>
-                </a>
-                <a href="{{ url('logout') }}" data-placement="top" data-toggle="tooltip" data-original-title="Logout">
-                <span class="icon wb-power" aria-hidden="true"></span>
-                </a>
-            </div>
+           
         </div>
         <!-- Page -->
         <div class="page animsition">

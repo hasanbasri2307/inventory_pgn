@@ -18,7 +18,7 @@ class UserController extends Controller
 		$this->data['users'] = $user;
 		$this->data['title'] = $title;
 
-		return view("content.administrator.user.list",$this->data);
+		return view("content.master.user.list",$this->data);
 	}
 
 	public function create(){
@@ -26,7 +26,7 @@ class UserController extends Controller
 		$this->data['department'] = $this->get_department();
 		$this->data['title'] = $title;
 
-		return view("content.administrator.user.create",$this->data);
+		return view("content.master.user.create",$this->data);
 	}
 
 	public function save(UserRequest $request){
@@ -50,7 +50,7 @@ class UserController extends Controller
 		$this->data['title'] = $title;
 		$this->data['department'] = $this->get_department();
 
-		return view("content.administrator.user.edit",$this->data);
+		return view("content.master.user.edit",$this->data);
 	}
 
 	public function update($id,UserRequest $request){

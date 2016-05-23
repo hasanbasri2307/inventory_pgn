@@ -17,14 +17,14 @@ class DepartmentController extends Controller
 		$this->data['departments'] = $department;
 		$this->data['title'] = $title;
 
-		return view("content.administrator.department.list",$this->data);
+		return view("content.master.department.list",$this->data);
 	}
 
 	public function create(){
 		$title = "Create Department";
 		$this->data['title'] = $title;
 
-		return view("content.administrator.department.create",$this->data);
+		return view("content.master.department.create",$this->data);
 	}
 
 	public function save(DepartmentRequest $request){
@@ -42,7 +42,7 @@ class DepartmentController extends Controller
 		$this->data['department'] = $department;
 		$this->data['title'] = $title;
 
-		return view("content.administrator.department.edit",$this->data);
+		return view("content.master.department.edit",$this->data);
 	}
 
 	public function update($id,DepartmentRequest $request){

@@ -62,13 +62,50 @@ Route::group(['middleware'=>['auth']],function(){
 	Route::get('request-order','RequestOrderController@index');
 	Route::get('request-order/create','RequestOrderController@create');
 	Route::post('request-order/save','RequestOrderController@save');
-	Route::get('request-order/show/{id}/{no_ro}','RequestOrderController@show');
-	Route::get('request-order/edit/{id}/{no_ro}','RequestOrderController@edit');
+	Route::get('request-order/show/{id}','RequestOrderController@show');
+	Route::get('request-order/edit/{id}','RequestOrderController@edit');
 	Route::put('request-order/update/{id}','RequestOrderController@update');
 	Route::delete('request-order/delete/{id}','RequestOrderController@delete');
 	Route::get('request-order/sub/delete/{id}','RequestOrderController@delete_sub');
 	Route::post('request-order/sub/save','RequestOrderController@save_sub');
-	
+	Route::get('request-order/detail/{id}','RequestOrderController@detail');
+
+	//purchase order
+	Route::get('purchase-order','PurchaseOrderController@index');
+	Route::get('purchase-order/create','PurchaseOrderController@create');
+	Route::post('purchase-order/save','PurchaseOrderController@save');
+	Route::get('purchase-order/show/{id}','PurchaseOrderController@show');
+	Route::get('purchase-order/edit/{id}','PurchaseOrderController@edit');
+	Route::put('purchase-order/update/{id}','PurchaseOrderController@update');
+	Route::delete('purchase-order/delete/{id}','PurchaseOrderController@delete');
+	Route::get('purchase-order/sub/delete/{id}','PurchaseOrderController@delete_sub');
+	Route::post('purchase-order/sub/save','PurchaseOrderController@save_sub');
+	Route::get('purchase-order/detail/{id}','PurchaseOrderController@detail');
+
+
+	//purchase order
+	Route::get('delivery-order','DeliveryOrderController@index');
+	Route::get('delivery-order/create','DeliveryOrderController@create');
+	Route::post('delivery-order/save','DeliveryOrderController@save');
+	Route::get('delivery-order/show/{id}','DeliveryOrderController@show');
+	Route::get('delivery-order/edit/{id}','DeliveryOrderController@edit');
+	Route::put('delivery-order/update/{id}','DeliveryOrderController@update');
+	Route::delete('delivery-order/delete/{id}','DeliveryOrderController@delete');
+	Route::get('delivery-order/sub/delete/{id}','DeliveryOrderController@delete_sub');
+	Route::post('delivery-order/sub/save','DeliveryOrderController@save_sub');
+
+	//Stock
+	Route::get('stock','StockController@index');
+
+	//Report
+	Route::get('report/stock','ReportController@stock');
+	Route::post('report/stock','ReportController@doStock');
+	Route::get('report/request-order','ReportController@requestOrder');
+	Route::post('report/request-order','ReportController@doRequestOrder');
+	Route::get('report/purchase-order','ReportController@purchaseOrder');
+	Route::post('report/purchase-order','ReportController@doPurchaseOrder');
+	Route::get('report/delivery-order','ReportController@deliveryOrder');
+	Route::post('report/delivery-order','ReportController@doDeliveryOrder');
 });
 
 Route::auth();

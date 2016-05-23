@@ -13,7 +13,7 @@ class PurchaseOrderRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,9 @@ class PurchaseOrderRequest extends Request
     {
         return [
             //
+            "po_date" => "required",
+            "ro_id" => "required",
+            "vendor_id" => "required"
         ];
     }
 }

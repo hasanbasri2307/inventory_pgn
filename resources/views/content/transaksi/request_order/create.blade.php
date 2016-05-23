@@ -59,7 +59,7 @@
                                               <tr>
 
                                               <td width="60%">{!! Form::select('products[]',$products,null,['placeholder'=>'Choose','class'=>'form-control select2','data-plugin'=>'select2']) !!}</td>
-                                                <td width="10%"><input type="number" class="form-control" name="qty[]" min="1" value="1"></td>
+                                                <td width="20%"><input type="number" class="form-control" name="qty[]" min="1" value="1"></td>
                                                 <td><button type="button" class="btn btn-danger" onclick="hapus(this)" id="remove" disabled>Remove</button></td>
                                                 
                                               </tr>
